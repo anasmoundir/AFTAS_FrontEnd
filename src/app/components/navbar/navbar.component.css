@@ -1,0 +1,22 @@
+.mat-toolbar {
+  height: 64px;
+}
+.brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-right: 16px;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.mat-button {
+  margin-left: 16px;
+  color: white; 
+}

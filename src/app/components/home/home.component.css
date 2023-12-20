@@ -1,0 +1,143 @@
+body {
+	background-color: #eaeef3;
+}
+
+.card {
+  position: absolute;
+  margin-left: 760px;
+  margin-top: 450px;
+  background-color: #eaeef3;
+  width: 400px;
+  height: 50px;
+  border-radius: 20px;
+  box-shadow: 20px 20px 40px #c7cacf, -20px -20px 40px #ffffff;
+  animation: card 2s ease 0s 1 normal forwards;
+}
+
+@keyframes card {
+	0% {
+		transform: scale(0.5);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+.g {
+  position: absolute;
+  margin-left: 153px;
+  margin-top: 110px;
+  font-size: 14px;
+  color: #d5d8db;
+  font-family: Roboto;
+
+
+}
+
+.blue {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  margin-top: -32px;
+  margin-left: 149px;
+  border-radius: 4px;
+  animation: myAnim 1s ease 0s 1 normal forwards;
+  background-image: url(../../../assets/images/R.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.red {
+  position: absolute;
+
+  width: 50px;
+  height: 50px;
+  margin-top: -32px;
+  margin-left: 174px;
+  border-radius: 4px;
+  animation: myAnim 2s ease 0s 1 normal forwards;
+  background-image: url(../../../assets/images/R.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.yellow {
+  position: absolute;
+
+
+  width: 50px;
+  height: 50px;
+  margin-top: -32px;
+  margin-left: 199px;
+  border-radius: 4px;
+  animation: myAnim 3s ease 0s 1 normal forwards;
+  background-image: url(../../../assets/images/R.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.green {
+  position: absolute;
+
+  width: 50px;
+  height: 50px;
+  margin-top: -32px;
+  margin-left: 224px;
+  border-radius: 4px;
+  animation: myAnim 4s ease 0s 1 normal forwards;
+  background-image: url(../../../assets/images/R.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+  .search {
+    position: absloute;
+    margin-left: 25px;
+    margin-top: 19px;
+
+  }
+
+@keyframes myAnim {
+	0% {
+		animation-timing-function: ease-in;
+		opacity: 0;
+		transform: translateY(-500px);
+	}
+
+	38% {
+		animation-timing-function: ease-out;
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	55% {
+		animation-timing-function: ease-in;
+		transform: translateY(-50px);
+	}
+
+	72% {
+		animation-timing-function: ease-out;
+		transform: translateY(0);
+	}
+
+	81% {
+		animation-timing-function: ease-in;
+		transform: translateY(-28px);
+	}
+
+	90% {
+		animation-timing-function: ease-out;
+		transform: translateY(0);
+	}
+
+	95% {
+		animation-timing-function: ease-in;
+		transform: translateY(-5px);
+	}
+
+	100% {
+		animation-timing-function: ease-out;
+		transform: translateY(0);
+	}
+}

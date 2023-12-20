@@ -1,0 +1,39 @@
+<h1 mat-dialog-title>{{ isEditMode ? 'Edit Member' : 'Add Member' }}</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Name" [(ngModel)]="data.name" name="name" required minlength="2" maxlength="50" />
+    <!-- Add other validation messages as needed -->
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Family Name" [(ngModel)]="data.familyname" name="familyname" required minlength="2" maxlength="50" />
+    <!-- Add other validation messages as needed -->
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="date" placeholder="Accession Date" [(ngModel)]="data.accessionDate" name="accessionDate" required />
+    <!-- Add other validation messages as needed -->
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Nationality" [(ngModel)]="data.nationality" name="nationality" required />
+    <!-- Add other validation messages as needed -->
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Identity Document Type</mat-label>
+    <mat-select [(ngModel)]="data.identitydocumenttype" name="identitydocumenttype" required>
+      <mat-option *ngFor="let type of identityDocumentTypes" [value]="type">{{ type }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button *ngIf="isEditMode" (click)="onDelete()">Delete</button>
+  <button mat-button (click)="onCancel()">Cancel</button>
+
+  <button mat-button *ngIf="isEditMode" (click)="onUpdate()">Update</button>
+  <button mat-button (click)="onUpdate()">Update</button>
+
+  <button mat-button *ngIf="!isEditMode" (click)="onAdd()">Add</button>
+</div>
