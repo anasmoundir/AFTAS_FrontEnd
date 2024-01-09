@@ -1,0 +1,11 @@
+<mat-card class="winner-card">
+  <mat-card-header>
+    <mat-card-title>Winner</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div *ngIf="memberDetails" class="member-details">
+      <p class="member-name">{{ memberDetails.name }} {{ memberDetails.familyname }}   {{ memberDetails.accessionDate }}  {{ memberDetails.identitydocumenttype }}</p>
+    </div>
+  </mat-card-content>
+</mat-card>

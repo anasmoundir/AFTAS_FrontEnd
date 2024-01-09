@@ -5,9 +5,9 @@ import { MatSort } from '@angular/material/sort';
 import { member } from 'src/app/models/member.model';
 import { MemberServiceService } from 'src/app/services/memberservice/member-service.service';
 import { MatDialog } from '@angular/material/dialog';
-import { MemberModalComponent } from '../member-modal/member-modal.component';
-import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
-// import { DatePipe } from '@angular/common';
+import { MemberModalComponent } from './member-modal/member-modal.component';
+import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-member-list',

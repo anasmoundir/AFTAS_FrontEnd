@@ -28,7 +28,7 @@ export class CompetitionsListComponent {
     this.fetchClosedCompetitions();
   }
 
-  private fetchOpenCompetitions(page: number = 0, size: number = 10): void {
+  private fetchOpenCompetitions(page: number = 0, size: number = 100): void {
     this.competitionService.getOpenCompetitions(page, size).subscribe(
       (competitions: competition[]) => {
         this.openCompetitions = competitions;
@@ -45,7 +45,7 @@ export class CompetitionsListComponent {
     );
   }
 
-  private fetchClosedCompetitions(page: number = 0, size: number = 10): void {
+  private fetchClosedCompetitions(page: number = 0, size: number = 100): void {
     this.competitionService.getClosedCompetitions(page, size).subscribe(
       (competitions: competition[]) => {
         this.closedCompetitions = competitions;

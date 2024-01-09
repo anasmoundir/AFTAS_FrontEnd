@@ -1,0 +1,39 @@
+<mat-card>
+  <mat-card-content>
+    <mat-form-field>
+      <input matInput [(ngModel)]="searchName" placeholder="Enter name" />
+      <button mat-icon-button color="primary" (click)="searchByName()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [(ngModel)]="searchFamilyname" placeholder="Enter family name" />
+      <button mat-icon-button color="primary" (click)="searchByFamilyname()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [(ngModel)]="searchNum" placeholder="Enter number" />
+      <button mat-icon-button color="primary" (click)="searchByNum()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="resetInputs()">Reset</button>
+
+    <div *ngIf="isSearching && searchResults.length === 0">
+      <p>No results found.</p>
+    </div>
+
+    <div *ngIf="searchResults.length > 0">
+      <h3>Search Results:</h3>
+      <ul>
+        <li *ngFor="let member of searchResults">
+          {{ member.name }} {{ member.familyname }} (Number: {{ member.num }})
+        </li>
+      </ul>
+    </div>
+  </mat-card-content>
+</mat-card>

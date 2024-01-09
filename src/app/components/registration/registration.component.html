@@ -1,1 +1,25 @@
-<p>registration works!</p>
+<div class="competition-registration-container">
+
+  <h2 class="registration-title">Competition Registration</h2>
+
+  <form [formGroup]="registrationForm" (ngSubmit)="registerForCompetition()" class="registration-form">
+
+    <mat-form-field class="form-group">
+      <mat-label>Select Open Competition</mat-label>
+      <mat-select formControlName="competitionId">
+        <mat-option *ngFor="let competition of openCompetitions" [value]="competition.id">{{ competition.code }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="form-group">
+      <mat-label>Select Member</mat-label>
+      <mat-select formControlName="memberId">
+        <mat-option *ngFor="let member of members" [value]="member.id">{{ member.num }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="registrationForm.invalid" class="submit-button">Register</button>
+
+  </form>
+
+</div>

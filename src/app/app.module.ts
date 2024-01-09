@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { MemberListComponent } from './components/member-list/member-list.component';
+import { MemberListComponent } from './components/member/member-list/member-list.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -14,17 +14,27 @@ import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule,Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { MemberModalComponent } from './components/member-modal/member-modal.component';
+import { MemberModalComponent } from './components/member/member-list/member-modal/member-modal.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { MatSelectModule } from '@angular/material/select';
-import { CompetitionsListComponent } from './components/competitions-list/competitions-list.component';
+import { CompetitionsListComponent } from './components/competition/competitions-list/competitions-list.component';
 import { RegistrationComponent } from './components/registration/registration.component';
-import { PodiomComponent } from './components/podiom/podiom.component';
+import { PodiumComponent } from './components/podiom/podiom.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+import { WinnerCardComponent } from './components/winner-card/winner-card.component';
+import { CompetitionAddComponent } from './components/competition/competition-add/competition-add.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MemberSearchComponent } from './components/member/member-list/member-search/member-search.component';
+
 
 
 
@@ -39,8 +49,12 @@ import { MatTabsModule } from '@angular/material/tabs';
     ConfirmDialogComponent,
     CompetitionsListComponent,
     RegistrationComponent,
-    PodiomComponent ,
-    CompetitionsListComponent
+    PodiumComponent,
+    CompetitionsListComponent,
+    WinnerCardComponent,
+    CompetitionAddComponent,
+    MemberSearchComponent
+
   ],
   imports: [
     BrowserModule,
@@ -59,8 +73,14 @@ import { MatTabsModule } from '@angular/material/tabs';
     FormsModule,
     MatDialogModule,
     MatSelectModule,
-    MatTabsModule
-
+    MatTabsModule,
+    ReactiveFormsModule,
+    MatListModule,
+    MatCardModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatMenuModule,
+    MatSnackBarModule
   ],
 
 

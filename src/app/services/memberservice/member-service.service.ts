@@ -20,16 +20,31 @@ export class MemberServiceService {
       map(response => response.content)
     );
   }
+  searchMembersByName(name: string): Observable<member[]> {
+    const url = `${this.apiUrl}/members/searchByName?name=${name}`;
+    return this.http.get<member[]>(url);
+  }
+
+  searchMembersByFamilyname(familyname: string): Observable<member[]> {
+    const url = `${this.apiUrl}/members/searchByFamilyname?familyname=${familyname}`;
+    return this.http.get<member[]>(url);
+  }
+
+  searchMembersByNum(num: number): Observable<member[]> {
+    const url = `${this.apiUrl}/members/searchByNum?num=${num}`;
+    return this.http.get<member[]>(url);
+  }
+
+  addMember(memberData: any): Observable<member> {
+    const url = `${this.apiUrl}`;
+    return this.http.post<member>(url, memberData);
+  }
 
 deleteMember(id: number): Observable<void> {
   return this.http.delete<void>(this.apiUrl + "/"+id);
 }
-
 updateMember(id: number, updatedMember: member): Observable<member> {
   return this.http.put<member>(this.apiUrl + "/" + id, updatedMember);
-}
-addMember(newMember: member): Observable<member> {
-  return this.http.post<member>(this.apiUrl, newMember);
 }
 getMemberById(id: number): Observable<member> {
   return this.http.get<member>(this.apiUrl + id);

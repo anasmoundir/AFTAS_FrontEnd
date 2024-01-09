@@ -3,10 +3,11 @@ import { Time } from "@angular/common";
 export interface competition
 {
   id : number,
-  theDate :Date,
+  theDate : Date,
   startTime :Time,
   endTime : Time,
-  numberOfParticipant:number,
+  numberOfParticipant: number,
+  code : string,
   location : string,
   amount : number
 }

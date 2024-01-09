@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PodiomComponent } from './podiom.component';
+import { PodiumComponent } from './podiom.component';
 
 describe('PodiomComponent', () => {
-  let component: PodiomComponent;
-  let fixture: ComponentFixture<PodiomComponent>;
+  let component: PodiumComponent;
+  let fixture: ComponentFixture<PodiumComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PodiomComponent]
+      declarations: [PodiumComponent]
     });
-    fixture = TestBed.createComponent(PodiomComponent);
+    fixture = TestBed.createComponent(PodiumComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

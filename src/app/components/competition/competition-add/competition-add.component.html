@@ -1,0 +1,43 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Add Competition</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="competitionForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label>Date:</mat-label>
+        <input matInput [matDatepicker]="datepicker" formControlName="theDate">
+        <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+        <mat-datepicker #datepicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Start Time:</mat-label>
+        <input matInput formControlName="startTime" type="time">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>End Time:</mat-label>
+        <input matInput formControlName="endTime" type="time">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Number of Participants:</mat-label>
+        <input matInput formControlName="numberOfParticipant" type="number">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Location:</mat-label>
+        <input matInput formControlName="location">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Amount:</mat-label>
+        <input matInput formControlName="amount" type="number">
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="!competitionForm.valid">Add Competition</button>
+    </form>
+  </mat-card-content>
+</mat-card>
