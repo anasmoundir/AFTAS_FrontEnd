@@ -34,6 +34,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MemberSearchComponent } from './components/member/member-list/member-search/member-search.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { ActivationComponent } from './components/activation/activation.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 
@@ -53,8 +57,10 @@ import { MemberSearchComponent } from './components/member/member-list/member-se
     CompetitionsListComponent,
     WinnerCardComponent,
     CompetitionAddComponent,
-    MemberSearchComponent
-
+    MemberSearchComponent,
+    LoginComponent,
+    RegisterComponent,
+    ActivationComponent
   ],
   imports: [
     BrowserModule,
@@ -80,7 +86,7 @@ import { MemberSearchComponent } from './components/member/member-list/member-se
     MatNativeDateModule,
     MatDatepickerModule,
     MatMenuModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
 
 

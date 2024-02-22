@@ -1,0 +1,32 @@
+<div class="register-container">
+  <h2>Register</h2>
+  <form class="register-form" (ngSubmit)="register()" #registerForm="ngForm">
+
+    <mat-form-field appearance="outline" class="full-width">
+      <input matInput placeholder="Username" [(ngModel)]="user.username" name="username" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <input matInput placeholder="Email" [(ngModel)]="user.email" name="email" required email>
+      <mat-error *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].dirty">
+        Please enter a valid email address.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <input matInput type="password" placeholder="Password" [(ngModel)]="user.password" name="password" required>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">Register</button>
+  </form>
+
+  <!-- Success Message Popup -->
+  <mat-snack-bar-container *ngIf="showSuccessMessage" class="success-message" duration="3000" verticalPosition="top">
+    Registration successful!
+  </mat-snack-bar-container>
+
+  <!-- Error Message Popup -->
+  <mat-snack-bar-container *ngIf="showErrorMessage" class="error-message" duration="3000" verticalPosition="top">
+    Registration failed. Please try again.
+  </mat-snack-bar-container>
+</div>

@@ -40,6 +40,7 @@ export class CompetitionService {
     return this.http.get<any>(url).pipe(map(response =>response.content));
 }
 
+
 getClosedCompetitions(page: number, size: number): Observable<competition[]> {
   const url = `${this.apiUrl}competition/closed?page=${page}&size=${size}`;
   return this.http.get<any>(url).pipe(map(response => response.content));
