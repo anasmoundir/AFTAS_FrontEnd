@@ -1,32 +1,40 @@
-<div class="register-container">
-  <h2>Register</h2>
-  <form class="register-form" (ngSubmit)="register()" #registerForm="ngForm">
+<div class="container mx-auto">
+  <div class="max-w-md mx-auto mt-10 bg-white p-8 rounded-md shadow-md">
+    <h2 class="text-2xl font-semibold mb-6 text-center">Register</h2>
+    <form (ngSubmit)="register()" #registerForm="ngForm">
 
-    <mat-form-field appearance="outline" class="full-width">
-      <input matInput placeholder="Username" [(ngModel)]="user.username" name="username" required>
-    </mat-form-field>
+      <div class="mb-4">
+        <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+        <input type="text" id="username" placeholder="Enter your username" [(ngModel)]="user.username" name="username" required
+          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+      </div>
 
-    <mat-form-field appearance="outline" class="full-width">
-      <input matInput placeholder="Email" [(ngModel)]="user.email" name="email" required email>
-      <mat-error *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].dirty">
-        Please enter a valid email address.
-      </mat-error>
-    </mat-form-field>
+      <div class="mb-4">
+        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" [(ngModel)]="user.email" name="email" required email
+          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+        <div *ngIf="registerForm.controls['email']?.invalid"
+          class="text-sm text-red-600 mt-1">Please enter a valid email address.</div>
+      </div>
 
-    <mat-form-field appearance="outline" class="full-width">
-      <input matInput type="password" placeholder="Password" [(ngModel)]="user.password" name="password" required>
-    </mat-form-field>
+      <div class="mb-4">
+        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" [(ngModel)]="user.password" name="password"
+          required
+          class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+      </div>
 
-    <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">Register</button>
-  </form>
+      <button type="submit"
+        class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        [disabled]="registerForm.invalid">Register</button>
+    </form>
+    <div class="text-center">
+      <span class="text-gray-600">you have an account?</span>
+      <a routerLink="/login" class="text-indigo-600">login</a>
+    </div>
 
-  <!-- Success Message Popup -->
-  <mat-snack-bar-container *ngIf="showSuccessMessage" class="success-message" duration="3000" verticalPosition="top">
-    Registration successful!
-  </mat-snack-bar-container>
+    <div *ngIf="showSuccessMessage" class="mt-4 text-green-600 text-center">Registration successful! Please check your email to activate your account.</div>
 
-  <!-- Error Message Popup -->
-  <mat-snack-bar-container *ngIf="showErrorMessage" class="error-message" duration="3000" verticalPosition="top">
-    Registration failed. Please try again.
-  </mat-snack-bar-container>
+    <div *ngIf="showErrorMessage" class="mt-4 text-red-600 text-center">Registration failed. Please try again.</div>
+  </div>
 </div>

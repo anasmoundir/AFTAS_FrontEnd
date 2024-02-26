@@ -9,19 +9,24 @@ import { CompetitionAddComponent } from './components/competition/competition-ad
 import { MemberSearchComponent } from './components/member/member-list/member-search/member-search.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ActivationComponent } from './components/activation/activation.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { adminGuard } from 'src/guards/admin.guard';
 
 
 const routes: Routes = [
   {path:"home",component:HomeComponent},
   {path:"login",component:LoginComponent},
   {path:"register",component:RegisterComponent},
-  {path:"member-list", component : MemberListComponent},
+  {path:"member-list", component : MemberListComponent,canActivate:[adminGuard]},
   {path :"",component:HomeComponent},
   {path : "competion-list", component:CompetitionsListComponent},
   {path:"memberSearch", component:MemberSearchComponent},
   {path : "podiomOftheCompetition",component:PodiumComponent},
   {path : "Registration",component:RegistrationComponent},
   {path:"AddCompetition",component:CompetitionAddComponent},
+  {path: "activation",component:ActivationComponent},
+  {path: "forbidden",component:ForbiddenComponent},
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 

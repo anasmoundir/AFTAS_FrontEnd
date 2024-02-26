@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { LoginService } from 'src/app/services/loginservice/login.service';
 
 @Component({
@@ -20,16 +18,15 @@ export class LoginComponent {
         .subscribe(
           response => {
             console.log('Login successful', response);
+            localStorage.setItem('token', response.token);
+            
           },
           error => {
             console.error('Login error', error);
           }
         );
     } else {
-      // Handle empty username or password
       console.error('Username or password is empty');
     }
   }
-
-
 }

@@ -10,8 +10,9 @@ export class ActivationComponent {
   username: string = '';
   constructor(private activationService:ActivationService) {}
 
+
   activeUser()  {
-    if (this.username.trim() !== '') {
+    if (this.username && this.username.trim() !== '') { 
       this.activationService.activateUser(this.username).subscribe(
         () => {
           console.log('User activated successfully');
@@ -24,6 +25,5 @@ export class ActivationComponent {
       console.error('Username cannot be empty');
     }
   }
-
 
 }

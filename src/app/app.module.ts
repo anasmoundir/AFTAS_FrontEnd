@@ -11,7 +11,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RouterModule,Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { MemberModalComponent } from './components/member/member-list/member-modal/member-modal.component';
@@ -38,8 +38,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ActivationComponent } from './components/activation/activation.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
-
+import { JwtInterceptor } from './interceptor/jwt.interceptor';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 
 
@@ -60,7 +60,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MemberSearchComponent,
     LoginComponent,
     RegisterComponent,
-    ActivationComponent
+    ActivationComponent,
+    ForbiddenComponent
   ],
   imports: [
     BrowserModule,
@@ -87,10 +88,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatDatepickerModule,
     MatMenuModule,
     MatSnackBarModule,
+    MatSnackBarModule,
   ],
 
-
-  providers: [MatDialog ],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

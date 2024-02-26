@@ -1,6 +1,8 @@
-<div>
-  <h2>Account Activation</h2>
-  <label for="username">Username:</label>
-  <input type="text" id="username" [(ngModel)]="username">
-  <button (click)="activeUser()">Activate</button>
-</div>
+<form (ngSubmit)="activeUser()" #activationForm="ngForm">
+  <mat-form-field>
+    <input matInput placeholder="Username" name="username" ngModel required>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit" [disabled]="activationForm.invalid">
+    Activate User
+  </button>
+</form>
