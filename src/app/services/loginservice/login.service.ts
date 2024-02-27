@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -8,14 +8,26 @@ import { environment } from 'src/environments/environment';
 })
 export class LoginService {
 
-  private apiUrl = environment.apiUrl+'auth/login';
-  constructor(private http: HttpClient) { }
+
+  private apiUrl = environment.apiUrl + 'auth/login';
+  private isAuthenticatedSubject: BehaviorSubject<boolean>;
+  public isAuthenticated$: Observable<boolean>;
+
+  constructor(private http: HttpClient) {
+    this.isAuthenticatedSubject = new BehaviorSubject<boolean>(this.checkAuthenticationStatus());
+    this.isAuthenticated$ = this.isAuthenticatedSubject.asObservable(); 
+  }
+
+  private checkAuthenticationStatus(): boolean {
+    return !!localStorage.getItem('accessToken');
+  }
 
   login(username: string, password: string): Observable<any> {
     return this.http.post<any>(this.apiUrl, { username, password }).pipe(
       tap(response => {
         localStorage.setItem('accessToken', response.access_token);
         localStorage.setItem('refreshToken', response.refresh_token);
+        this.isAuthenticatedSubject.next(true);
       })
     );
   }
@@ -28,4 +40,15 @@ export class LoginService {
       })
     );
   }
+
+  logout() {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    this.isAuthenticatedSubject.next(false);
+  }
+
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('accessToken');
+  }
+
 }

@@ -39,7 +39,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { ActivationComponent } from './components/activation/activation.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { JwtInterceptor } from './interceptor/jwt.interceptor';
-import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { ForbiddenComponent } from './components/forbidden/forbidden.component';
+import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
 
 
 
@@ -61,7 +62,8 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
     LoginComponent,
     RegisterComponent,
     ActivationComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    LogoutButtonComponent
   ],
   imports: [
     BrowserModule,

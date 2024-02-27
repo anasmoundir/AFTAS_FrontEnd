@@ -28,11 +28,14 @@ export class RegisterService {
       const navigationExtras: NavigationExtras = {
         queryParams: { successMessage: 'Registration successful! Please log in to continue.' }
       };
-      this.router.navigate(['/login'], navigationExtras); 
+      this.router.navigate(['/login'], navigationExtras);
       return throwError('Redirecting to login...');
     } else {
       console.error(`Backend returned code ${error.status}, body was: ${error.error}`);
       return throwError('Something bad happened; please try again later.');
     }
+  }
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('accessToken');
   }
 }

@@ -1,8 +1,15 @@
 <form (ngSubmit)="activeUser()" #activationForm="ngForm">
   <mat-form-field>
-    <input matInput placeholder="Username" name="username" ngModel required>
+    <input matInput placeholder="Username" name="username" [(ngModel)]="username" required>
   </mat-form-field>
   <button mat-raised-button color="primary" type="submit" [disabled]="activationForm.invalid">
     Activate User
   </button>
 </form>
+
+<h2>Deactivated Accounts</h2>
+<ul>
+  <li *ngFor="let user of deactivatedUsers">
+    {{ user.username }}
+  </li>
+</ul>

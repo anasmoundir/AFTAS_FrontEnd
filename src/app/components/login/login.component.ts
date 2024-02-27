@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'; // Import Router
 import { LoginService } from 'src/app/services/loginservice/login.service';
 
 @Component({
@@ -6,11 +7,16 @@ import { LoginService } from 'src/app/services/loginservice/login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   username: string = '';
   password: string = '';
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private router: Router) { }
+  ngOnInit(): void {
+    if (this.loginService.isAuthenticated()) {
+      this.router.navigate(['/competion-list']);
+    }
+  }
 
   login(): void {
     if (this.username && this.password) {
@@ -19,7 +25,7 @@ export class LoginComponent {
           response => {
             console.log('Login successful', response);
             localStorage.setItem('token', response.token);
-            
+            this.router.navigate(['/competion-list']);
           },
           error => {
             console.error('Login error', error);

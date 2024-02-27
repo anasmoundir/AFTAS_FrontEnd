@@ -10,8 +10,9 @@ import { MemberSearchComponent } from './components/member/member-list/member-se
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ActivationComponent } from './components/activation/activation.component';
-import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { ForbiddenComponent } from './components/forbidden/forbidden.component';
 import { adminGuard } from 'src/guards/admin.guard';
+import { juryGuard } from 'src/guards/jury.guard';
 
 
 const routes: Routes = [
@@ -23,9 +24,9 @@ const routes: Routes = [
   {path : "competion-list", component:CompetitionsListComponent},
   {path:"memberSearch", component:MemberSearchComponent},
   {path : "podiomOftheCompetition",component:PodiumComponent},
-  {path : "Registration",component:RegistrationComponent},
-  {path:"AddCompetition",component:CompetitionAddComponent},
-  {path: "activation",component:ActivationComponent},
+  {path : "Registration",component:RegistrationComponent,canActivateChild:[juryGuard]},
+  {path:"AddCompetition",component:CompetitionAddComponent,canActivate:[adminGuard],canActivateChild:[juryGuard]},
+  {path: "activation",component:ActivationComponent,canActivate:[adminGuard]},
   {path: "forbidden",component:ForbiddenComponent},
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

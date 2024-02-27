@@ -19,7 +19,11 @@ export class RegisterComponent {
   showErrorMessage = false;
 
   constructor(private registrationService: RegisterService, private snackBar: MatSnackBar, private router: Router) {}
-
+  ngOnInit(): void {
+    if (this.registrationService.isAuthenticated()) {
+      this.router.navigate(['/competion-list']);
+    }
+  }
   register() {
     this.registrationService.register(this.user)
       .subscribe(
@@ -39,7 +43,7 @@ export class RegisterComponent {
         },
         (error) => {
           console.error('Registration failed:', error);
-        
+
           this.showSuccessMessage = false;
           this.showErrorMessage = true;
           this.snackBar.open(error, 'Close', { duration: 3000 });
