@@ -15,7 +15,7 @@ export class LoginService {
 
   constructor(private http: HttpClient) {
     this.isAuthenticatedSubject = new BehaviorSubject<boolean>(this.checkAuthenticationStatus());
-    this.isAuthenticated$ = this.isAuthenticatedSubject.asObservable(); 
+    this.isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
   }
 
   private checkAuthenticationStatus(): boolean {

@@ -1,15 +1,31 @@
 <form (ngSubmit)="activeUser()" #activationForm="ngForm">
-  <mat-form-field>
-    <input matInput placeholder="Username" name="username" [(ngModel)]="username" required>
-  </mat-form-field>
-  <button mat-raised-button color="primary" type="submit" [disabled]="activationForm.invalid">
+  <div class="mb-4">
+    <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username:</label>
+    <input id="username" name="username" [(ngModel)]="username" type="text" placeholder="Username"
+           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+           required>
+  </div>
+  <button mat-raised-button color="primary" type="submit" [disabled]="activationForm.invalid"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
     Activate User
   </button>
 </form>
 
-<h2>Deactivated Accounts</h2>
-<ul>
-  <li *ngFor="let user of deactivatedUsers">
-    {{ user.username }}
-  </li>
-</ul>
+<h2 class="text-xl font-bold mt-6 mb-4">Deactivated Accounts</h2>
+
+<div class="overflow-x-auto">
+  <table class="table-auto w-full">
+    <thead>
+    <tr>
+      <th class="px-4 py-2 text-left">Username</th>
+      <th class="px-4 py-2 text-left">Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of deactivatedUsers" class="border-b">
+      <td class="px-4 py-2">{{ user.username }}</td>
+      <td class="px-4 py-2">{{ user.email }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

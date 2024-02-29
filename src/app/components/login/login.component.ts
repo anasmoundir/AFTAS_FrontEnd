@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'; // Import Router
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { LoginService } from 'src/app/services/loginservice/login.service';
 
 @Component({
@@ -25,14 +26,33 @@ export class LoginComponent implements OnInit {
           response => {
             console.log('Login successful', response);
             localStorage.setItem('token', response.token);
-            this.router.navigate(['/competion-list']);
+            Swal.fire({
+              icon: 'success',
+              title: 'Login Successful',
+              text: 'You have been successfully logged in!',
+              confirmButtonText: 'OK'
+            }).then(() => {
+              this.router.navigate(['/competion-list']);
+            });
           },
           error => {
             console.error('Login error', error);
+            Swal.fire({
+              icon: 'error',
+              title: 'Login Error',
+              text: 'the credentials are not correct or the account is not activated. Please try again.',
+              confirmButtonText: 'OK'
+            });
           }
         );
     } else {
       console.error('Username or password is empty');
+      Swal.fire({
+        icon: 'error',
+        title: 'Username or Password Empty',
+        text: 'Please enter your username and password.',
+        confirmButtonText: 'OK'
+      });
     }
   }
 }

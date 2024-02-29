@@ -13,22 +13,21 @@ export class RegistrationComponent implements OnInit {
 
   registrationForm: FormGroup;
   openCompetitions: competition[] = [];
-  members: any[] = []; // Assuming you have a property to store members
-
+  members: any[] = [];
   constructor(
     private formBuilder: FormBuilder,
     private competitionService: CompetitionService,
-    private memberService: MemberServiceService // Inject the MemberService
+    private memberService: MemberServiceService
   ) {
     this.registrationForm = this.formBuilder.group({
       competitionId: ['', Validators.required],
-      memberId: ['', Validators.required] // Add memberId to the form
+      memberId: ['', Validators.required]
     });
   }
 
   ngOnInit(): void {
     this.fetchOpenCompetitions();
-    this.fetchMembers(); // Fetch members when the component initializes
+    this.fetchMembers(); 
   }
 
   fetchOpenCompetitions(): void {

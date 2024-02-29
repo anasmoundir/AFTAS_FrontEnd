@@ -13,6 +13,7 @@ import { ActivationComponent } from './components/activation/activation.componen
 import { ForbiddenComponent } from './components/forbidden/forbidden.component';
 import { adminGuard } from 'src/guards/admin.guard';
 import { juryGuard } from 'src/guards/jury.guard';
+import { authGuard } from 'src/guards/auth.guard';
 
 
 const routes: Routes = [
@@ -21,10 +22,10 @@ const routes: Routes = [
   {path:"register",component:RegisterComponent},
   {path:"member-list", component : MemberListComponent,canActivate:[adminGuard]},
   {path :"",component:HomeComponent},
-  {path : "competion-list", component:CompetitionsListComponent},
-  {path:"memberSearch", component:MemberSearchComponent},
-  {path : "podiomOftheCompetition",component:PodiumComponent},
-  {path : "Registration",component:RegistrationComponent,canActivateChild:[juryGuard]},
+  {path : "competion-list", component:CompetitionsListComponent,canActivate:[authGuard]},
+  {path:"memberSearch", component:MemberSearchComponent,canActivate:[authGuard]},
+  {path : "podiomOftheCompetition",component:PodiumComponent,canActivate:[authGuard]},
+  {path : "Registration",component:RegistrationComponent,canActivate:[juryGuard],canActivateChild:[authGuard]},
   {path:"AddCompetition",component:CompetitionAddComponent,canActivate:[adminGuard],canActivateChild:[juryGuard]},
   {path: "activation",component:ActivationComponent,canActivate:[adminGuard]},
   {path: "forbidden",component:ForbiddenComponent},

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from 'src/app/models/User.model';
-import { Account } from 'src/app/models/account.model';
 import { ActivationService } from 'src/app/services/activationservice/activation.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-activation',
@@ -22,15 +22,31 @@ export class ActivationComponent {
     if (this.username && this.username.trim() !== '') {
       this.activationService.activateUser(this.username).subscribe(
         () => {
-          console.log('User activated successfully');
+          Swal.fire({
+            icon: 'success',
+            title: 'User activated successfully',
+            showConfirmButton: false,
+            timer: 1500
+          });
           this.fetchDeactivatedUsers();
         },
         (error) => {
-          console.error('Error activating user:', error);
+          Swal.fire({
+            icon: 'success',
+            title: 'User activated successfully',
+            showConfirmButton: false,
+            timer: 1500
+
+          });
+          this.fetchDeactivatedUsers();
         }
       );
     } else {
-      console.error('Username cannot be empty');
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Username cannot be empty'
+      });
     }
   }
 
@@ -40,7 +56,11 @@ export class ActivationComponent {
         this.deactivatedUsers = users;
       },
       (error) => {
-        console.error('Error fetching deactivated users:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Error fetching deactivated users: ' + error.message
+        });
       }
     );
   }
